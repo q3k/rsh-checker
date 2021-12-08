@@ -25,7 +25,7 @@ type Checker struct {
 	Failed      map[string]struct{}
 }
 
-func (c *Checker) Dump(w io.Writer) {
+func (c *Checker) Dump(w io.Writer) bool {
 	allOkay := true
 	display := func(t string, m map[string]struct{}) {
 		if len(m) == 0 {
@@ -55,6 +55,7 @@ func (c *Checker) Dump(w io.Writer) {
 	if allOkay {
 		fmt.Fprintf(w, "All okay (%d records)!\n", c.Okay)
 	}
+	return allOkay
 }
 
 func New(server, wantA string) *Checker {

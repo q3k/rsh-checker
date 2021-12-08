@@ -68,5 +68,7 @@ func main() {
 		}
 	}
 
-	c.Dump(os.Stdout)
+	if !c.Dump(os.Stdout) {
+		os.Exit(1)
+	}
 }
